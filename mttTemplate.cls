@@ -23,8 +23,9 @@
 \usepackage{xstring}
 
 %% For your own citations
-\usepackage{bibentry}
-\nobibliography*
+% \usepackage{apacite}
+% \usepackage{bibentry}
+% \nobibliography*
 
 %% Fancy headers and footers
 \usepackage[automark,headsepline]{scrlayer-scrpage}
@@ -39,122 +40,123 @@
 %% The addmargin environment without the big vertical skip
 \newenvironment{addmarginnobigskip}{\setlength{\parskip}{0pt plus 1pt}\addmargin}{\endaddmargin}
 
-
-%% The header page with the title and author
+% The header page with the title and author
 \newcommand{\headerpage}{
-	\begin{titlepage}
-		\thispagestyle{empty}
-		\begin{center}
-			\vspace*{\stretch{1}}
-			
-			{\large\bfseries {Doctoral thesis}}
-			\\~\\
-			\begin{spacing}{1.5}
-			{\LARGE\bfseries\MakeUppercase {\thesistitle}}
-			\end{spacing}
-			
-			\vspace{\stretch{0.5}}
-			
+	\thispagestyle{empty}
+	\begin{center}
+		\vspace*{\stretch{1}}
 
-			{\large {\thesisauthor}}
-			\\~\\
-			\thesisyear
-			\vspace{\stretch{2}}
-			
-		\end{center}
-	\end{titlepage}
+		{\large\bfseries {Doctoral thesis}}
+		\\~\\
+		\begin{spacing}{1.5}
+		{\large\bfseries\MakeUppercase {\thesistitle}}
+		\end{spacing}
+
+		\vspace{\stretch{0.5}}
+
+		{\large {\thesisauthor}}
+		\\~\\
+		\thesisyear
+		\vspace{\stretch{2}}
+
+	\end{center}
+  \clearpage
 }
 
-%% The real thesis title page with the necessary text
+% Copyright page
+\newcommand{\copyrightpage}{
+	\thispagestyle{empty}
+	\begin{bottomparagraph}
+
+	\textcopyright \space \thesisauthor, Maastricht \thesisyear. \\
+	All rights reserved. No part of this publication may be reproduced, stored in a retrieval system or transmitted in any form or by any means, electronic, mechanical, photocopying, recording or otherwise, without prior written permission of the author.
+	\\~\\
+	\begin{tabular}{@{}ll@{}}
+		Cover & \coverdetails \\
+		Production & \productiondetails \\
+		ISBN & \isbnnumber
+	\end{tabular}
+
+	\end{bottomparagraph}
+	\clearpage
+}
+
+% Thesis title page with obligatory text
 \newcommand{\thesistitlepage}{
-	\begin{titlepage}
-		\thispagestyle{empty}
-		\begin{center}
-			\vspace*{\stretch{1.5}}
-			
-			\begin{spacing}{1.5}
-			{\LARGE\bfseries\MakeUppercase {\thesistitle}}
-			\end{spacing}
-			
-			\vspace{\stretch{2}}
-			
-			Dissertation\\~\\
-			To obtain the degree of Doctor at Maastricht University,\\
-			on the authority of the Rector Magnificus, Prof. Dr. R.M. Letschert,\\
-			in accordance with the decision of the Board of Deans,\\
-			to be defended in public \\
-			on \thesisdefendingdate, at \thesisdefendingtime
-			\\~\\
-			by \\~\\
-			\thesisauthor
-			
-			\vspace{\stretch{1}}
-		\end{center}
-	\end{titlepage}
+	\thispagestyle{empty}
+	\begin{center}
+		\vspace*{\stretch{1.5}}
+
+		\begin{spacing}{1.5}
+		{\large\bfseries\MakeUppercase {\thesistitle}}
+		\end{spacing}
+
+		\vspace{\stretch{2}}
+
+		Dissertation\\~\\
+		To obtain the degree of Doctor at Maastricht University,\\
+		on the authority of the Rector Magnificus, Prof. Dr. R.M. Letschert,\\
+		in accordance with the decision of the Board of Deans,\\
+		to be defended in public \\
+		on \thesisdefendingdate, at \thesisdefendingtime
+		\\~\\
+		by \\~\\
+		\thesisauthorfull
+
+		\vspace{\stretch{1}}
+	\end{center}
+	\clearpage
 }
 
-%% Flip the printer margins from left to right
+% Flip the printer margins from left to right
 \newcommand{\flipbindingmargins}{
 	\let\tmp\oddsidemargin
 	\let\oddsidemargin\evensidemargin
 	\let\evensidemargin\tmp
-	\reversemarginpar		
+	\reversemarginpar
 }
 
-%% Environment for pushing a paragraph to the bottom of the page
-\newenvironment{bottomparagraph}{\par\vspace*{\fill}}{}
-
-%% The info page with the promotor information and the legal stuff
+% The info page with the promotor information and the legal stuff
 \newcommand{\infopage}[1][false]{
 	\thispagestyle{empty}
-	
+
 	\begin{flushleft}
 		\textbf{Promotor}
 		\begin{addmarginnobigskip}[1em]{1em}
 			\thesispromotors
 		\end{addmarginnobigskip}
-		
+
 		\vspace{1em}
-		
+
 		\textbf{Copromotor}
 		\begin{addmarginnobigskip}[1em]{2em}
 			\thesiscopromotors
 		\end{addmarginnobigskip}
-		
+
 		\vspace{2em}
-		
+
 		\textbf{Assessment Committee} \\
 		\begin{addmarginnobigskip}[1em]{2em}
 			\assessmentcommittee
-		\end{addmarginnobigskip}	
-		
+		\end{addmarginnobigskip}
+
 	\end{flushleft}
 
-	\begin{bottomparagraph}		
-		\IfEqCase{#1}{
-			{false}{}
-			{true}{
-				\textcopyright \space \thesisauthor, Maastricht \thesisyear. \\
-				All rights reserved. No part of this publication may be reproduced, stored in a retrieval system or transmitted in any form or by any means, electronic, mechanical, photocopying, recording or otherwise, without prior written permission of the author.
-				\\~\\
-				\begin{tabular}{@{}ll@{}}
-					Cover & \coverdetails \\ 
-					Production & \productiondetails \\
-					ISBN & \isbnnumber
-				\end{tabular} 
-			}
-		}
-	\end{bottomparagraph}
+	\vfill
+
+	The research presented in this thesis was supported by the Netherlands Organisation for Scientific Research (NWO) Research Talent grant
+	    406-14-108 awarded to Marian Schneider and Rainer Goebel.
+
 	\clearpage
 }
 
-%% The dedication markup, use as \dedication{My text}
+% The dedication markup, use as \dedication{My text}
 \renewcommand{\dedication}[1]{
 	\newenvironment{dedicationenv}
 	{
 		\clearpage           % we want a new page
 		\thispagestyle{empty}% no header and footer
-		\vspace*{\stretch{1}}% some space at the top 
+		\vspace*{\stretch{1}}% some space at the top
 		\itshape             % the text is in italics
 		\centering           % put it in the center
 	}
@@ -162,7 +164,7 @@
 		\vspace{\stretch{4}} % space at bottom is three times that at the top
 		\clearpage           % finish off the page
 	}
-	
+
 	\begin{dedicationenv}
 		#1
 	\end{dedicationenv}

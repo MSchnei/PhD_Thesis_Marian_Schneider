@@ -1,57 +1,40 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Use this for a a4 output
-%\input{definitions/a4style}
-
-%% Use this for your booklet
+% Import layout
 \input{definitions/b5style}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Add the configuration and packages
+% Add the configuration and packages
 \input{definitions/configuration}
 \input{definitions/packages}
 \input{definitions/hyphenation}
 
-
 %% Path to the directory containing the graphics and figures
 %% You can add more subpaths by adding ``,{./figures/subdir/}`` within the first set of brackets.
-\graphicspath{{./figures/}}
-
-
-%% handy websites:
-%% https://www.tablesgenerator.com/
-%% https://www.codecogs.com/latex/eqneditor.php
-
+% \graphicspath{{./figures/}}
 
 \begin{document}
-	
+
 %% The front matter
 \frontmatter
 	\headerpage
 	\thesistitlepage
     % set info page to false to disable the copyright text
 	\infopage[true]
-	\dedication{To my parents}
+	\dedication{To my friends}
 	\tableofcontents
-
 
 %% Start the main content
 \mainmatter
-	\include{chapters/general_introduction}
-	\include{chapters/chapter2}
-	\include{chapters/general_discussion}	
-%	\include{chapters/summary}
-%	\include{chapters/summary_dutch}
-%	\include{chapters/valorisation}
-%	\include{chapters/acknowledgements}
-%	\include{chapters/curriculum_vitae}
+	\include{chapters/chapter_01_introduction}
+	\include{chapters/chapter_02_segmentator}
+	\include{chapters/chapter_03_motionquartet}
+	\include{chapters/chapter_04_motdepprf}
+	\include{chapters/chapter_05_discussion}	
 
-%% Start the appendix part for adding appendices.
-\appendix
-%	\include{chapters/appendix1}
-
-%% The final part of the book, the backmatter for the bibliography and perhaps an index
+%% The final part of the book, the bibliography and final parts
 \backmatter
-	\bibliographystyle{mttplainnat}
-	\bibliography{bibliography}
+	\include{misc/summary}
+	\include{misc/valorisation}
+	\include{misc/acknowledgements}
+	\include{misc/about_the_author}
+    % \include{misc/publications}
 
 \end{document}
