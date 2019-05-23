@@ -19,12 +19,31 @@
 %% For mini TOC in each chapter
 \usepackage{minitoc}
 
-%% For more advanced citations
-\usepackage[citestyle=authoryear,bibstyle=authoryear,refsection=chapter, doi=false,isbn=false,url=false]{biblatex}
-\addbibresource{bibliography.bib}
-
-%% better urls in bibliography
+%% For citations with biblatex
+\usepackage[american]{babel}
+\usepackage{epstopdf}
+\usepackage{csquotes}
 \usepackage[hidelinks]{hyperref}
+\usepackage[
+    style=apa,
+    backend=biber,
+    sortcites=true,
+    sorting=nyt,
+    isbn=false,
+    url=false,
+    doi=false,
+    eprint=false,
+    hyperref=false,
+    backref=false,
+    giveninits=false,
+    refsection=chapter,
+    uniquename=false,
+]{biblatex}
+
+\DeclareLanguageMapping{american}{american-apa}
+
+%% Import bibliography file
+\addbibresource{bibliography.bib}
 
 %% better looking tables by default
 \usepackage{booktabs}
