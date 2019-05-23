@@ -1,14 +1,46 @@
 \documentclass
 [
-	paper=b5,
+	paper=b5,            % B5 = 176 * 250mm
 	fontsize=11pt,
 	headings=big,
-	parskip,
 	numbers=noendperiod, % 2.3.1 vs 2.3.1. (no dot after the last chapter number)
-	twoside=true,
-	toc=bibliography, % Bibliography appears in Table of Contents (without a number)
+	twoside=true,        % true for print version
+	DIV=15,              % Text width. See below. 15 for print version. Otherwise 10.
+	BCOR=2.1cm,          % Binding correction, 2.1cm for print version. Otherwise 0.
+	cleardoublepage=empty,
+	headinclude=true,
+    footinclude=false,
+	headsepline=true,
 	version=last % Use latest version of the KOMA-Script
 ]
 {mttTemplate}
-\usepackage[twoside,paperwidth=17cm,paperheight=24cm]{geometry}
+
+% The typearea option DIV defines the amount of rows and columns, and a larger
+% value results in a wider text block and narrower page margins.
+% See: http://www.khirevich.com/latex/page_layout/
+
+% Microtypography.
+\usepackage{microtype}
+
+% For custom title spacing.
+\usepackage{titlesec}
+
+% For figure captions on separate page. See
+% https://tex.stackexchange.com/questions/49858/how-do-i-make-figure-captions-span-multiple-pages
+\usepackage{caption}
+\DeclareCaptionLabelFormat{adja-page}{\hrulefill\\#1 #2 \emph{(previous page)}}
+
+% Title spacing syntax:
+% \titlespacing*{<command>}{<left>}{<before-sep>}{<after-sep>}
+\titlespacing*{\section}{0cm}{0.5cm}{0.1cm}
+\titlespacing*{\subsection}{0cm}{0.4cm}{0.1cm}
+\titlespacing*{\subsubsection}{0cm}{0.3cm}{0.1cm}
+
+% Paragraph layout, vertical indentation:
+\setlength{\parindent}{1cm}
+
+% Paragraph layout, horizontal spacing:
+\setlength{\parskip}{0cm}
+
+% Vertical distance between header and top of the text area:
 \setlength{\headsep}{2.5em}
