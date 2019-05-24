@@ -232,7 +232,7 @@
   afterskip=.4\baselineskip]{subsection}
 \RedeclareSectionCommand[
   beforeskip=-.5\baselineskip,
-  afterskip=.25\baselineskip]{subsubsection}
+  afterskip=-.25\baselineskip]{subsubsection}
 
 % Command for adding an appendix section to each chapter
 \usepackage{amsmath}
