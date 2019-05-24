@@ -201,6 +201,14 @@
 	\end{bottomparagraph}
 }
 
+% For changing the numbering of supplementary figures and tables
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+     }
+
 % Set fonts for the section headers
 % Set the section headers
 \setkomafont{disposition}{\scshape\mdseries\rmfamily}
