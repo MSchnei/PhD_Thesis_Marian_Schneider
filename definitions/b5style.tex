@@ -22,20 +22,11 @@
 % Microtypography.
 \usepackage{microtype}
 
-% For custom title spacing.
-\usepackage{titlesec}
-
-% For figure captions on separate page. See
+% For figure and captions on separate pages. See
 % https://tex.stackexchange.com/questions/49858/how-do-i-make-figure-captions-span-multiple-pages
 \usepackage{caption}
 % the following format will be used to emulate the captions produced by fltpage
 \DeclareCaptionLabelFormat{adja-page}{\hrulefill\\#1 #2 \emph{(previous page)}}
-
-% Title spacing syntax:
-% \titlespacing*{<command>}{<left>}{<before-sep>}{<after-sep>}
-\titlespacing*{\section}{0cm}{0.5cm}{0.1cm}
-\titlespacing*{\subsection}{0cm}{0.4cm}{0.1cm}
-\titlespacing*{\subsubsection}{0cm}{0.3cm}{0.1cm}
 
 % Paragraph layout, vertical indentation:
 \setlength{\parindent}{1cm}

@@ -220,9 +220,19 @@
 \setkomafont{captionlabel}{\small}
 \setcapindent{0em}
 
-%% The spacing between the start of the section and the section title
-\RedeclareSectionCommand[afterskip=0.05em]{section}
-\RedeclareSectionCommand[afterskip=0.05em]{subsection}
+%% Adjust spacing between start of the section title and text
+\RedeclareSectionCommand[
+  beforeskip=-0pt,
+  afterskip=2\baselineskip]{chapter}
+\RedeclareSectionCommand[
+  beforeskip=-\baselineskip,
+  afterskip=.5\baselineskip]{section}
+\RedeclareSectionCommand[
+  beforeskip=-.75\baselineskip,
+  afterskip=.4\baselineskip]{subsection}
+\RedeclareSectionCommand[
+  beforeskip=-.5\baselineskip,
+  afterskip=.25\baselineskip]{subsubsection}
 
 % Command for adding an appendix section to each chapter
 \usepackage{amsmath}
