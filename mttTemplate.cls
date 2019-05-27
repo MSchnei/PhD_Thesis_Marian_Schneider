@@ -20,6 +20,15 @@
 % For the extra parsing required in the chapter command
 \usepackage{xparse}
 
+% Microtypography.
+\usepackage{microtype}
+
+% For figure and captions on separate pages. See
+% https://tex.stackexchange.com/questions/49858/how-do-i-make-figure-captions-span-multiple-pages
+\usepackage{caption}
+% the following format will be used to emulate the captions produced by fltpage
+\DeclareCaptionLabelFormat{adja-page}{\hrulefill\\#1 #2 \emph{(previous page)}}
+
 % For utf8 symbols in the text
 \usepackage[utf8]{inputenc}
 
@@ -202,6 +211,7 @@
 }
 
 % For changing the numbering of supplementary figures and tables
+% This ensures that SI are prepended an "S" and counting starts with S1
 \newcommand{\beginsupplement}{%
         \setcounter{table}{0}
         \renewcommand{\thetable}{S\arabic{table}}%
@@ -210,6 +220,7 @@
      }
 
 % Set fonts for the section headers
+% "disposition" means all headings in the document
 % Set the section headers
 \setkomafont{disposition}{\scshape\mdseries\rmfamily}
 % but that also sets the TOC entries, so reverting that
@@ -217,10 +228,17 @@
 
 % Set the font of the captions
 \setkomafont{caption}{\small}
-\setkomafont{captionlabel}{\small}
+\setkomafont{captionlabel}{\small\bfseries}
 \setcapindent{0em}
 
-%% Adjust spacing between start of the section title and text
+% Paragraph layout, vertical indentation:
+\setlength{\parindent}{1cm}
+% Paragraph layout, horizontal spacing:
+\setlength{\parskip}{0cm}
+% Vertical distance between page header and top of text:
+\setlength{\headsep}{2.5em}
+
+%% Adjust spacing between section title and text
 \RedeclareSectionCommand[
   beforeskip=-0pt,
   afterskip=2\baselineskip]{chapter}
@@ -232,7 +250,7 @@
   afterskip=.4\baselineskip]{subsection}
 \RedeclareSectionCommand[
   beforeskip=-.5\baselineskip,
-  afterskip=-.25\baselineskip]{subsubsection}
+  afterskip=-.4\baselineskip]{subsubsection}
 
 % Command for adding an appendix section to each chapter
 \usepackage{amsmath}

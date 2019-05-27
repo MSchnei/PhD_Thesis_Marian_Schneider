@@ -18,21 +18,3 @@
 % The typearea option DIV defines the amount of rows and columns, and a larger
 % value results in a wider text block and narrower page margins.
 % See: http://www.khirevich.com/latex/page_layout/
-
-% Microtypography.
-\usepackage{microtype}
-
-% For figure and captions on separate pages. See
-% https://tex.stackexchange.com/questions/49858/how-do-i-make-figure-captions-span-multiple-pages
-\usepackage{caption}
-% the following format will be used to emulate the captions produced by fltpage
-\DeclareCaptionLabelFormat{adja-page}{\hrulefill\\#1 #2 \emph{(previous page)}}
-
-% Paragraph layout, vertical indentation:
-\setlength{\parindent}{1cm}
-
-% Paragraph layout, horizontal spacing:
-\setlength{\parskip}{0cm}
-
-% Vertical distance between header and top of the text area:
-\setlength{\headsep}{2.5em}
