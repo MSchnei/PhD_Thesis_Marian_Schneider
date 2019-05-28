@@ -51,7 +51,7 @@
 		{\large\bfseries {Doctoral thesis}}
 		\\~\\
 		\begin{spacing}{1.5}
-		{\large\bfseries\MakeUppercase {\thesistitle}}
+		{\Large\bfseries {\thesistitle}}
 		\end{spacing}
 
 		\vspace{\stretch{0.5}}
@@ -99,8 +99,8 @@
 		To obtain the degree of Doctor at Maastricht University,\\
 		on the authority of the Rector Magnificus, Prof. Dr. R.M. Letschert,\\
 		in accordance with the decision of the Board of Deans,\\
-		to be defended in public \\
-		on \thesisdefendingdate, at \thesisdefendingtime
+		to be defended in public on \\
+		\thesisdefendingdate, at \thesisdefendingtime
 		\\~\\
 		by \\~\\
 		\thesisauthorfull
@@ -188,7 +188,7 @@
 	\begin{bottomparagraph}
 		\rule{0.5\textwidth}{0.1pt}\\
 		 Based on\\
-		 Gulban, O. F.*, Schneider, M.*, Marquardt, I., Haast, R. A. M., {\&} {De Martino}, F. (2018). A scalable method to improve outer gray matter boundary segmentation at ultra high field MRI. \textit{Plos One}, 13, 1-33.
+		 Gulban, O. F.*, Schneider, M.*, Marquardt, I., Haast, R. A., {\&} {De Martino}, F. (2018). A scalable method to improve outer gray matter boundary segmentation at ultra high field MRI. \textit{Plos One}, 13, 1-33.
 	\end{bottomparagraph}
 }
 \newcommand{\papercitetwo}{
