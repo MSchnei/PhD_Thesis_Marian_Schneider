@@ -138,8 +138,7 @@ Visual inspection revealed that applying the GraMag method excluded most of the 
 \label{fig:Fig4}
 \end{figure}
 
-
-Table~\ref{tab:table1} compares segmentation performance before and after applying the GraMag method to the initial GM segmentations of the MPRAGE data set. The GraMag method led to an improvement of GM segmentations in all subjects, independently of whether the initial segmentation was done by SPM 12 or FSL FAST. On average, the AVHD decreased from 0.733 $\pm$ 0.087 (mean $\pm$ standard deviation across subjects) to 0.571 $\pm$ 0.051 for SPM 12 and from 0.584 $\pm$ 0.109 to 0.558 $\pm$ 0.089 for FSL FAST. The GraMag method did not affect the DICE coefficient. On average, it changed very little from 0.861 $\pm$ 0.020 to 0.862 $\pm$ 0.016 for SPM 12 and from 0.878 $\pm$ 0.027 to 0.872 $\pm$ 0.089 for FSL FAST.
+Table~\ref{tab:table1} compares segmentation performance before and after applying the GraMag method to the initial GM segmentations for the MPRAGE data set. The GraMag method led to an improvement of GM segmentations in all subjects for segmentation from SPM 12 and all but one one subjects for segmentations from FSL FAST. On average, the AVHD decreased from 0.735 $\pm$ 0.100 (mean $\pm$ standard deviation across subjects) to 0.580 $\pm$ 0.022 for SPM 12 and from 0.601 $\pm$ 0.083 to 0.572 $\pm$ 0.073 for FSL FAST. The GraMag method did not affect the DICE coefficient. On average, it changed very little from 0.866 $\pm$ 0.014 to 0.860 $\pm$ 0.021 for SPM 12 and from 0.870 $\pm$ 0.015 to 0.873 $\pm$ 0.019 for FSL FAST.
 
 \begin{table}[!ht]
 \centering
@@ -173,7 +172,7 @@ DICE, DICE Coefficient; AVHD, Average Hausdorff Distance; Init, initial segmenta
 \label{tab:table1}
 \end{table}
 
-Table~\ref{tab:table2} compares segmentation performances before and after applying the GraMag method to the initial GM segmentations of the MP2RAGE data set. The GraMag method decreased AVHD for all but one subject and, on average, from 0.508 $\pm$ 0.088 to 0.444 $\pm$ 0.083 for CBS tools and from 0.990 $\pm$ 0.062 to 0.775 $\pm$ 0.088 for FSL FAST. It decreased the DICE coefficient, on average, from 0.882 $\pm$ to 0.875 $\pm$ for CBS tools and from 0.839 $\pm$ to 0.818 $\pm$ for FSL FAST.
+Table~\ref{tab:table2} compares segmentation performances before and after applying the GraMag method to the segmentations for the MP2RAGE data set. The GraMag method decreased AVHD for all but one subject and, on average, from 0.544 $\pm$ 0.121 to 0.477 $\pm$ 0.087 for CBS tools and from 1.012 $\pm$ 0.043 to 0.830 $\pm$ 0.082 for FSL FAST. On average, it slightly increased the DICE coefficient for initial CBS tools segmentations from 0.861 $\pm$ 0.024 to 0.868 $\pm$ 0.028 and decreased the DICE coefficient for FSL FAST segmentations from 0.804 $\pm$ 0.035 to 0.785 $\pm$ 0.034.
 
 \begin{table}[!ht]
 \centering
