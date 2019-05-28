@@ -183,13 +183,6 @@
 	\oldtableofcontents
 }
 
-% Set the title style
-\KOMAoption{chapterprefix}{true}
-\renewcommand{\chaptername}{}
-\renewcommand*{\raggedchapter}{\raggedleft}
-\setkomafont{chapterprefix}{\fontsize{70}{0} \selectfont}
-\setkomafont{chapter}{\normalfont\huge}
-
 % Automatically start the minitoc in the frontmatter
 \let\oldfrontmatter\frontmatter
 \renewcommand\frontmatter{\oldfrontmatter \renewcommand*{\chapterheadstartvskip}{\vspace*{0\baselineskip}} \renewcommand{\chaptername}{}}
@@ -218,6 +211,13 @@
         \setcounter{figure}{0}
         \renewcommand{\thefigure}{S\arabic{figure}}%
      }
+
+% Set the title style
+\KOMAoption{chapterprefix}{true}
+\renewcommand{\chaptername}{}
+\renewcommand*{\raggedchapter}{\raggedleft}
+\setkomafont{chapterprefix}{\fontsize{70}{0} \selectfont}
+\setkomafont{chapter}{\normalfont\huge}
 
 % Set fonts for all section headers
 % "disposition" means all headings in the document
