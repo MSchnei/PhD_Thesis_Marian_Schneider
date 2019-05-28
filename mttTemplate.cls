@@ -207,16 +207,16 @@
 % This ensures that "S" is pre-pended and counting starts with 1
 \newcommand{\beginsupplement}{%
         \setcounter{table}{0}
-        \renewcommand{\thetable}{S\arabic{table}}%
+        \renewcommand{\thetable}{S\thechapter.\arabic{table}}%
         \setcounter{figure}{0}
-        \renewcommand{\thefigure}{S\arabic{figure}}%
+        \renewcommand{\thefigure}{S\thechapter.\arabic{figure}}%
      }
 
 \newcommand{\stopsupplement}{%
         \setcounter{table}{0}
-        \renewcommand{\thetable}{\arabic{table}}%
+        \renewcommand{\thetable}{\thechapter.\arabic{table}}%
         \setcounter{figure}{0}
-        \renewcommand{\thefigure}{\arabic{figure}}%
+        \renewcommand{\thefigure}{\thechapter.\arabic{figure}}%
      }
 
 % Set the title style
