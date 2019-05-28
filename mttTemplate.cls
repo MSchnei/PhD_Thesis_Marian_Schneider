@@ -219,9 +219,8 @@
         \renewcommand{\thefigure}{S\arabic{figure}}%
      }
 
-% Set fonts for the section headers
+% Set fonts for all section headers
 % "disposition" means all headings in the document
-% Set the section headers
 \setkomafont{disposition}{\scshape\mdseries\sffamily}
 % but that also sets the TOC entries, so reverting that
 \addtokomafont{chapterentry}{\rmfamily} 
@@ -251,21 +250,6 @@
 \RedeclareSectionCommand[
   beforeskip=-.5\baselineskip,
   afterskip=-.4\baselineskip]{subsubsection}
-
-% Command for adding an appendix section to each chapter
-\usepackage{amsmath}
-\makeatletter
-\newcounter{AppendixSection}
-\numberwithin{AppendixSection}{chapter}
-\def\@AppendixSection[#1]#2{
-	\refstepcounter{AppendixSection}
-	\section*{%
-		\addcontentsline{toc}{section}{\appendixname\ \Alph{AppendixSection}\quad#1}%
-		\appendixname\ \Alph{AppendixSection}\quad#2}
-}
-\def\@@AppendixSection#1{\@AppendixSection[#1]{#1}}
-\def\AppendixSection{\@ifnextchar[\@AppendixSection\@@AppendixSection}
-\renewcommand{\theAppendixSection}{\Alph{AppendixSection}}
 
 % "Chapter" prefix in ToC
 %\let\@@l@chapter\l@chapter
