@@ -36,9 +36,9 @@
 \renewcommand*{\chaptermarkformat}{Chapter~\thechapter. \enskip}
 \rohead{}
 
+% Define useful commands for header/copyright/legal page, 
 % The addmargin environment without the big vertical skip
 \newenvironment{addmarginnobigskip}{\setlength{\parskip}{0pt plus 1pt}\addmargin}{\endaddmargin}
-
 % Environment for pushing a paragraph to the bottom of the page
 \newenvironment{bottomparagraph}{\par\vspace*{\fill}}{}
 
@@ -204,7 +204,7 @@
 }
 
 % For changing the numbering of supplementary figures and tables
-% This ensures that SI are prepended an "S" and counting starts with S1
+% This ensures that "S" is pre-pended and counting starts with 1
 \newcommand{\beginsupplement}{%
         \setcounter{table}{0}
         \renewcommand{\thetable}{S\arabic{table}}%
@@ -237,13 +237,13 @@
 % Vertical distance between page header and top of text:
 \setlength{\headsep}{2.5em}
 
-%% Adjust spacing between section title and text
+%% Adjust spacing between section titles and text
 \RedeclareSectionCommand[
   beforeskip=-0pt,
   afterskip=2\baselineskip]{chapter}
 \RedeclareSectionCommand[
   beforeskip=-\baselineskip,
-  afterskip=.5\baselineskip]{section}
+  afterskip=.4\baselineskip]{section}
 \RedeclareSectionCommand[
   beforeskip=-.75\baselineskip,
   afterskip=.4\baselineskip]{subsection}
