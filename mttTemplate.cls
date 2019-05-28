@@ -222,7 +222,7 @@
 % Set fonts for the section headers
 % "disposition" means all headings in the document
 % Set the section headers
-\setkomafont{disposition}{\scshape\mdseries\rmfamily}
+\setkomafont{disposition}{\scshape\mdseries\sffamily}
 % but that also sets the TOC entries, so reverting that
 \addtokomafont{chapterentry}{\rmfamily} 
 
