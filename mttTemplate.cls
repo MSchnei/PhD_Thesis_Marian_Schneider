@@ -183,6 +183,29 @@
 	\oldtableofcontents
 }
 
+% For citing publications in the beginning of the chapter
+\newcommand{\paperciteone}{
+	\begin{bottomparagraph}
+		\rule{0.5\textwidth}{0.1pt}\\
+		 Based on\\
+		 Gulban, O. F.*, Schneider, M.*, Marquardt, I., Haast, R. A. M., {\&} {De Martino}, F. (2018). A scalable method to improve outer gray matter boundary segmentation at ultra high field MRI. \textit{Plos One}, 13, 1-33.
+	\end{bottomparagraph}
+}
+\newcommand{\papercitetwo}{
+	\begin{bottomparagraph}
+		\rule{0.5\textwidth}{0.1pt}\\
+		 Based on\\
+		 Schneider, M., Kemper, V. G., Emmerling, T. C., {De Martino}, F., {\&} Goebel, R. (2019). Columnar clusters in the human motion complex reflect consciously perceived motion axis. \textit{Proceedings of the National Academy of Sciences}, 116, 5096-5101.
+	\end{bottomparagraph}
+}
+\newcommand{\papercitethree}{
+	\begin{bottomparagraph}
+		\rule{0.5\textwidth}{0.1pt}\\
+		 Based on\\
+		 Schneider, M., Marquardt, I., Shubarti, S., {De Martino}, F., {\&} Goebel, R. (submitted). Motion displaces population receptive fields in the direction opposite to motion.
+	\end{bottomparagraph}
+}
+
 % Automatically start the minitoc in the frontmatter
 \let\oldfrontmatter\frontmatter
 \renewcommand\frontmatter{\oldfrontmatter \renewcommand*{\chapterheadstartvskip}{\vspace*{0\baselineskip}} \renewcommand{\chaptername}{}}
@@ -194,14 +217,6 @@
 % Change the chapter index in the backmatter
 \let\oldbackmatter\backmatter
 \renewcommand\backmatter{\oldbackmatter \renewcommand*{\chapterheadstartvskip}{\vspace*{0\baselineskip}}}
-
-% For citing the work a chapter came from
-\newcommand{\papercitation}[2]{
-	\begin{bottomparagraph}
-		\rule{0.5\textwidth}{0.1pt}\\
-		 \hspace*{1em} Adapted from: \bibentry{#1}. #2.
-	\end{bottomparagraph}
-}
 
 % For changing the numbering of supplementary figures and tables
 % This ensures that "S" is pre-pended and counting starts with 1
