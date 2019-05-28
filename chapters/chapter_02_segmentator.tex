@@ -23,15 +23,20 @@ This chapter is intended as a demonstration that 2D histogram based methods are 
 
 We structured the chapter as follows. In Section \ref{sec:Theory}, we introduce the technique of specifying transfer functions based on 2D histogram representations of voxel intensity and gradient magnitude. We offer theoretical considerations for why this technique is suited to remove vessels and dura mater voxels in high-resolution MRI data ($< 1$ mm isotropic voxel size). In Section \ref{sec:DataRequirements} we outline required features of the input data and recommended data pre-processing steps. In Section \ref{sec:ValidationMethods} and \ref{sec:ValidationResults} we validate the suggested method by evaluating obtained GM segmentation results against expert GM segmentations obtained for nine subjects recorded at 7 T. We demonstrate considerable improvement in segmentation performance metrics. We have implemented the method described here in a free and open Python software package \parencite{segmentator_v1.5.0}. The package as well as validation data, corresponding expert segmentations, and processing scripts used to validate the proposed method are all openly available (see Table ~\ref{tab:availability}).
 
-\begin{table}[!ht]
+\begin{table}[htb!]
 \centering
-\begin{tabular}{l l}
-What? & Where? \\\hline
+\caption{Availability of validation data and code. Validation data and scripts as well as segmentation software are all openly accessible by following the corresponding links for their repositories.}
+\begin{tabular}{ll}
+\\
+\hline
+What? & Where? \\
+\midrule
 data & \url{https://zenodo.org/record/1206163}\\
 scripts & \url{https://zenodo.org/record/1219231}\\
-software & \url{https://zenodo.org/record/1220388}
+software & \url{https://zenodo.org/record/1220388}\\
+\bottomrule
 \end{tabular}
-\caption{\label{tab:availability}Availability of validation data and code. Validation data and scripts as well as segmentation software are all openly accessible by following the corresponding links for their repositories.}
+\label{tab:availability}
 \end{table}
 
 \section{Theory: transfer functions and histograms}
@@ -143,12 +148,13 @@ Table~\ref{tab:table1} compares segmentation performance before and after applyi
 \begin{table}[!ht]
 \centering
 \caption{
-Segmentation performance scores MPRAGE data set. The table shows the DICE (larger is better) and AVHD (less is better) for the initial SPM 12 and FSL FAST GM segmentations before and after applying the gradient magnitude method.}
+Segmentation performance scores MPRAGE data set. The table shows the DICE (larger is better) and AVHD (less is better) for the initial SPM 12 and FSL FAST GM segmentations before and after applying the gradient magnitude method. DICE, DICE Coefficient; AVHD, Average Hausdorff Distance; Init, initial segmentation; GraMag, gradient magnitude method.}
 \begin{tabular}{llllll}
+\\
 \hline
      &                & \vline SPM   &      & \vline FAST   &      \\
      &                & \vline DICE  & AVHD & \vline DICE       & AVHD \\
-\hline
+\midrule
  S02 &                &            &            &             &             \\
      & Init           & 0.8576     & 0.7413     & 0.8896      & 0.5375      \\
      & Init + GraMag  & 0.8594     & 0.5865     & 0.8902      & 0.4980      \\
@@ -164,11 +170,8 @@ Segmentation performance scores MPRAGE data set. The table shows the DICE (large
  S07 &                &            &            &             &             \\
      & Init           & 0.8897     & 0.6403     & 0.8490      & 0.7228      \\
      & Init + GraMag  & 0.8893     & 0.5574     & 0.8460      & 0.6862      \\
-\hline
+\bottomrule
 \end{tabular}
-\begin{flushleft}
-DICE, DICE Coefficient; AVHD, Average Hausdorff Distance; Init, initial segmentation; GraMag, gradient magnitude method.\\
-\end{flushleft}
 \label{tab:table1}
 \end{table}
 
@@ -177,12 +180,13 @@ Table~\ref{tab:table2} compares segmentation performances before and after apply
 \begin{table}[!ht]
 \centering
 \caption{
-Segmentation performance scores MP2RAGE data set. The table shows the DICE (larger is better) and AVHD (less is better) for the initial CBS tools and FSL FAST GM segmentations before and after additional masking using the gradient magnitude method.}
+Segmentation performance scores MP2RAGE data set. The table shows the DICE (larger is better) and AVHD (less is better) for the initial CBS tools and FSL FAST GM segmentations before and after additional masking using the gradient magnitude method. DICE, DICE Coefficient; AVHD, Average Hausdorff Distance; Init, initial segmentation; GraMag, gradient magnitude method.}
 \begin{tabular}{llllll}
+\\
 \hline
      &                 & \vline CBS   &      & \vline FAST   &      \\
      &                 & \vline DICE  & AVHD & \vline DICE       & AVHD \\
-\hline
+\midrule
  S001 &                &            &            &             &             \\
       & Init           & 0.8688     & 0.4081     & 0.8157      & 1.0427      \\
       & Init + GraMag  & 0.9032     & 0.4538     & 0.8095      & 0.8534      \\
@@ -195,11 +199,8 @@ Segmentation performance scores MP2RAGE data set. The table shows the DICE (larg
  S019 &                &            &            &             &             \\
       & Init           & 0.8920     & 0.4798     & 0.8356      & 0.9672      \\
       & Init + GraMag  & 0.8794     & 0.3639     & 0.8081      & 0.7359      \\
-\hline
+\bottomrule
 \end{tabular}
-\begin{flushleft}
-DICE, DICE Coefficient; AVHD, Average Hausdorff Distance; Init, initial segmentation; GraMag, gradient magnitude method.\\
-\end{flushleft}
 \label{tab:table2}
 \end{table}
 
@@ -295,5 +296,6 @@ To estimate the time saved by substituting manual correction with Segmentator, w
 \section{Acknowledgments}
 We would like to express our appreciation for the comments and suggestions of the reviewers which helped to improve the manuscript. We would also like to thank Thomas Emmerling for his guidance and advise on software implementation as well as Nikolaus Weiskopf, Rainer Goebel and Christophe Lenglet for valuable discussions of our early ideas.
 
+\stopsupplement
 \clearpage
 \printbibliography[heading=subbibnumbered, title={References}]

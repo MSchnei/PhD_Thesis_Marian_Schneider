@@ -212,6 +212,13 @@
         \renewcommand{\thefigure}{S\arabic{figure}}%
      }
 
+\newcommand{\stopsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{\arabic{figure}}%
+     }
+
 % Set the title style
 \KOMAoption{chapterprefix}{true}
 \renewcommand{\chaptername}{}
@@ -251,10 +258,11 @@
   beforeskip=-.5\baselineskip,
   afterskip=-.4\baselineskip]{subsubsection}
 
-% "Chapter" prefix in ToC
+%% "Chapter" prefix in ToC
 %\let\@@l@chapter\l@chapter
 %\def\l@chapter#1{\@@l@chapter{\chaptername\ #1}}
 \makeatother
 
 %% The spacing of the sections in the main table of contents
 \RedeclareSectionCommand[tocindent=2.5em]{section}
+
