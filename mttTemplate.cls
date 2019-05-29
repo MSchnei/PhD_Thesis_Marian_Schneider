@@ -188,7 +188,9 @@
 	\begin{bottomparagraph}
 		\rule{0.5\textwidth}{0.1pt}\\
 		 Based on\\
-		 Gulban, O. F.*, Schneider, M.*, Marquardt, I., Haast, R. A., {\&} {De Martino}, F. (2018). A scalable method to improve outer gray matter boundary segmentation at ultra high field MRI. \textit{Plos One}, 13, 1-33.
+		 Gulban, O. F.*, Schneider, M.*, Marquardt, I., Haast, R. A., {\&} {De Martino}, F. (2018). A scalable method to improve outer gray matter boundary segmentation at ultra high field MRI. \textit{Plos One}, 13, 1-33.\\
+		 \\
+		 *Authors contributed equally.
 	\end{bottomparagraph}
 }
 \newcommand{\papercitetwo}{
@@ -241,15 +243,23 @@
 \setkomafont{chapterprefix}{\fontsize{70}{0} \selectfont}
 \setkomafont{chapter}{\normalfont\huge}
 
-% Set fonts for all section headers
-% "disposition" means all headings in the document
-\setkomafont{disposition}{\scshape\mdseries\sffamily}
-% but that also sets the TOC entries, so reverting that
-\addtokomafont{chapterentry}{\rmfamily} 
+% Set all section headers to medium weight
+% ("disposition" means all headings in the document)
+\setkomafont{disposition}{\mdseries}
+% Set TOC entries to small capital letters (sc)
+\addtokomafont{chapterentry}{\scshape}
+% Set section headers to sc and decrease from \Large to \large 
+\setkomafont{section}{\scshape\large}
+% Set subsection header slanted
+\addtokomafont{subsection}{\slshape}
+% Set subsubsection header slanted
+\addtokomafont{subsubsection}{\slshape} 
 
-% Set the font of the captions
-\setkomafont{caption}{\small}
-\setkomafont{captionlabel}{\small\bfseries}
+% Set font of the captions to small and sans serif
+\setkomafont{caption}{\small\sffamily}
+% Set caption label also to bold and small capitals
+\setkomafont{captionlabel}{\small\sffamily\bfseries\scshape}
+% Set caption indentation to 0
 \setcapindent{0em}
 
 % Paragraph layout, vertical indentation:
