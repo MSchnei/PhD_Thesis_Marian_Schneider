@@ -23,22 +23,6 @@ This chapter is intended as a demonstration that 2D histogram based methods are 
 
 We structured the chapter as follows. In Section \ref{sec:Theory}, we introduce the technique of specifying transfer functions based on 2D histogram representations of voxel intensity and gradient magnitude. We offer theoretical considerations for why this technique is suited to remove vessels and dura mater voxels in high-resolution MRI data ($< 1$ mm isotropic voxel size). In Section \ref{sec:DataRequirements} we outline required features of the input data and recommended data pre-processing steps. In Section \ref{sec:ValidationMethods} and \ref{sec:ValidationResults} we validate the suggested method by evaluating obtained GM segmentation results against expert GM segmentations obtained for nine subjects recorded at 7 T. We demonstrate considerable improvement in segmentation performance metrics. We have implemented the method described here in a free and open Python software package \parencite{segmentator_v1.5.0}. The package as well as validation data, corresponding expert segmentations, and processing scripts used to validate the proposed method are all openly available (see Table~\ref{tab:availability}).
 
-\begin{table}[htb!]
-\centering
-\caption{Availability of validation data and code. Validation data and scripts as well as segmentation software are all openly accessible by following the corresponding links for their repositories.}
-\begin{tabular}{ll}
-\\
-\toprule
-What? & Where? \\
-\midrule
-data & \url{https://zenodo.org/record/1206163}\\
-scripts & \url{https://zenodo.org/record/1219231}\\
-software & \url{https://zenodo.org/record/1220388}\\
-\bottomrule
-\end{tabular}
-\label{tab:availability}
-\end{table}
-
 \section{Transfer functions and histograms}
 \label{sec:Theory}
 
@@ -212,7 +196,7 @@ First, we found that the improvements were slightly larger and more consistent a
 
 Second, we observed that the performance of the initial segmentation algorithm had an influence on how much we could further improve the GM segmentation. If performance of the initial segmentation algorithm was already relatively high, the improvement obtained with our methods tended to be smaller. Differences in initial segmentation performance might be explained by whether the algorithm has been benchmarked on this particular type of data. We assume FSL FAST and CBS tools to have been benchmarked on MPRAGE and MP2RAGE data respectively, which would explain their relative high performance for these data types.
 
-Importantly, our goal here was to aid already existing segmentation pipelines to deal with UHF sub-millimeter resolution data, not to replace those pipelines. Instead, the method presented here should be considered as an alternative to a large amount of manual slice-by-slice polishing of segmentations and thus as a time-saver. Manually correcting segmentation labels is very time-consuming and can quickly become unreliable. In contrast, our method greatly reduces the time required for manual polishing because it offers an efficient 2D summary and is more reliable because it is semi-automatic. Although the method presented here does not entirely eliminate the need for manual corrections, we estimated that for a whole brain cortical ribbon segmentation it saves on average 7.5 hours of manual work (for details on this estimation see Section \ref{sec:S1_Appendix}).
+Importantly, our goal here was to aid already existing segmentation pipelines to deal with UHF sub-millimeter resolution data, not to replace those pipelines. Instead, the method presented here should be considered as an alternative to a large amount of manual slice-by-slice polishing of segmentations and thus as a time-saver. Manually correcting segmentation labels is very time-consuming and can quickly become unreliable. In contrast, our method greatly reduces the time required for manual polishing because it offers an efficient 2D summary and is more reliable because it is semi-automatic. Although the method presented here does not entirely eliminate the need for manual corrections, we estimated that for a whole brain cortical ribbon segmentation it saves on average 7.5 hours of manual work (for details on this estimation see Section \ref{sec:S1_Appendix} in the Supplementary material).
 
 Our theoretical expectations implied that the methods presented here require high-resolution data ($<$ 1 mm). This requirement was unfortunately not met by most available segmentation validation data sets. Simulated phantom ('BrainWeb') data \parencite{Collins1998} are available at 1 mm and thus fell short of the resolution required for our purposes. Although an updated data set ('updated BrainWeb', \cite{AubertBroche2006a,AubertBroche2006b}) is available at higher resolution, the simulations in this data set were based on initial 3T MRI acquisitions. As a consequence, the updated BrainWeb data revealed considerably less bright vessel and dura mater voxels than 7 T data usually does and was not suitable to validate our methods.
 
@@ -291,6 +275,25 @@ To estimate the time saved by substituting manual correction with Segmentator, w
 \caption{2D histogram representation for MRI image of a human brain. The intensity \textbf{(A)} and gradient magnitude \textbf{(B)} values of a T1w-divided-by-PDw MRI image (MP2RAGE, 0.7 mm isotropic resolution) are represented in a 2D histogram \textbf{(C)}. Darker regions in the histogram indicate that many voxels are characterized by this particular combination of image intensity and gradient magnitude. The 2D histogram displays a characteristic pattern with tissue types occupying particular areas of the histogram \textbf{(D)}. Voxels containing CSF, dura mater or blood vessels (black dashed lines and arrows) cover different regions of the histogram than voxels containing WM and GM (red dashed lines). As a result, brain tissue becomes separable from non-brain tissue.}
 \label{fig:S07_Fig}
 \end{figure}
+
+\clearpage
+\subsection{Supplementary tables}
+
+\begin{table}[htb!]
+\centering
+\caption{Availability of validation data and code. Validation data and scripts as well as segmentation software are all openly accessible by following the corresponding links for their repositories.}
+\begin{tabular}{ll}
+\\
+\toprule
+What? & Where? \\
+\midrule
+data & \url{https://zenodo.org/record/1206163}\\
+scripts & \url{https://zenodo.org/record/1219231}\\
+software & \url{https://zenodo.org/record/1220388}\\
+\bottomrule
+\end{tabular}
+\label{tab:availability}
+\end{table}
 
 \clearpage
 \section{Acknowledgments}
