@@ -204,7 +204,7 @@
 	\begin{bottomparagraph}
 		\rule{0.5\textwidth}{0.1pt}\\
 		 Based on\\
-		 Schneider, M., Marquardt, I., Shubarti, S., {De Martino}, F., {\&} Goebel, R. (submitted). Motion displaces population receptive fields in the direction opposite to motion.
+		 Schneider, M., Marquardt, I., Sengupta, S., {De Martino}, F., {\&} Goebel, R. (submitted). Motion displaces population receptive fields in the direction opposite to motion.
 	\end{bottomparagraph}
 }
 
@@ -252,6 +252,8 @@
 \setkomafont{section}{\scshape\large}
 % Set subsection header slanted
 \addtokomafont{subsection}{\slshape}
+% Set subsection number from \large to \normalsize
+\renewcommand*{\subsectionformat}{\normalsize \thesubsection\autodot\enskip}
 % Set subsubsection header slanted
 \addtokomafont{subsubsection}{\slshape} 
 
@@ -275,10 +277,10 @@
   afterskip=2\baselineskip]{chapter}
 \RedeclareSectionCommand[
   beforeskip=-\baselineskip,
-  afterskip=.4\baselineskip]{section}
+  afterskip=.6\baselineskip]{section}
 \RedeclareSectionCommand[
   beforeskip=-.75\baselineskip,
-  afterskip=.4\baselineskip]{subsection}
+  afterskip=.6\baselineskip]{subsection}
 \RedeclareSectionCommand[
   beforeskip=-.5\baselineskip,
   afterskip=-.4\baselineskip]{subsubsection}
