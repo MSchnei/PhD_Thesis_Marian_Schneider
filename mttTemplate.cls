@@ -255,7 +255,7 @@
 % Set subsection number from \large to \normalsize
 \renewcommand*{\subsectionformat}{\normalsize \thesubsection\autodot\enskip}
 % Set subsubsection header slanted
-\addtokomafont{subsubsection}{\slshape} 
+\addtokomafont{subsubsection}{\scshape} 
 
 % Set font of the captions to small and sans serif
 \setkomafont{caption}{\small\sffamily}
