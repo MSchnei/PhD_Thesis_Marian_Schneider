@@ -24,11 +24,27 @@
 %% For avoiding orphans (sole lines at the bottom of the page) and widows ( sole lines at the top of the page)
 \usepackage[all]{nowidow}
 
+%% For defining custom colors with hex code
+\usepackage{xcolor}
+%% Define custom colors for links
+\definecolor{customgreen}{HTML}{006d2c}
+\definecolor{customblue}{HTML}{045a8d}
+\definecolor{customred}{HTML}{bd0026}
+
+% \usepackage[hidelinks]{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=customblue,
+    filecolor=customblue,      
+    urlcolor=customred,
+    citecolor=customgreen,
+}
+
 %% For citations with biblatex
 \usepackage[american]{babel}
 \usepackage{epstopdf}
 \usepackage{csquotes}
-\usepackage[hidelinks]{hyperref}
 \usepackage[
     style=apa,
     backend=biber,
@@ -38,7 +54,7 @@
     url=false,
     doi=false,
     eprint=false,
-    hyperref=false,
+    hyperref=true,
     backref=false,
     giveninits=false,
     refsection=chapter,
