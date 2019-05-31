@@ -82,14 +82,14 @@ For visualization of the functional results, we acquired scans with structural i
 For every subject we calculated the mean length of horizontal and vertical perceptual periods during the ambiguous motion experiment. To test for differences between horizontal and vertical periods, we conducted an independent-samples t-test for every subject (p\textless.05, two-sided). We also calculated the mean, standard deviation and range across subjects for the two types of perceptual periods.
 
 \subsection{Structural data analysis and segmentation}
-Structural images were processed using advanced segmentation tools in BrainVoyager 20.0 (Brain Innovation, Maastricht, The Netherlands), SPM's bias correction \parencite{Ashburner2005}, ITK-SNAP \parencite{py06nimg}, FSL BET \parencite{Smith2002}, morphological operations \parencite{scipy2001} and Segmentator \parencite{Gulban2018a}. Where not specified otherwise, default settings were used. Since the processing included many different steps and programs, a diagram of the input/output relationships for all processing steps is provided in Figure~\ref{fig:figAB_proc}A. We first registered the PDw image for every subject to their T1w image, using ITK-SNAP's automatic co-registration tools. In order to reduce the B1 bias field, we divided the T1w image by the PDw image and obtained a ratio image \parencite{Moortele2009}. The ratio image was brain-masked with a masked obtained by inputting the co-registered PDw image to FSL BET. We then used SPM's anatomical bias correction to further reduce inhomogeneities in the ratio image.
+Structural images were processed using advanced segmentation tools in BrainVoyager 20.0 (Brain Innovation, Maastricht, The Netherlands), SPM's bias correction \parencite{Ashburner2005}, ITK-SNAP \parencite{py06nimg}, FSL BET \parencite{Smith2002}, morphological operations \parencite{scipy2001} and Segmentator \parencite{Gulban2018a}. Where not specified otherwise, default settings were used. Since the processing included many different steps and programs, a diagram of the input/output relationships for all processing steps is provided in Figure~\ref{fig:figA_proc}. We first registered the PDw image for every subject to their T1w image, using ITK-SNAP's automatic co-registration tools. In order to reduce the B1 bias field, we divided the T1w image by the PDw image and obtained a ratio image \parencite{Moortele2009}. The ratio image was brain-masked with a masked obtained by inputting the co-registered PDw image to FSL BET. We then used SPM's anatomical bias correction to further reduce inhomogeneities in the ratio image.
 
 The resulting image was input to BrainVoyager's advanced segmentation routine to obtain a white matter (WM) definition. This initial WM image was inspected and manually polished in ITK-SNAP using the adaptive paint brush mode in combination with a graphics tablet (Intuos Art; Wacom Co. Ltd; Kazo, Saitama, Japan). Special emphasis was placed on corrections in the region of interest (bilateral hMT+). In two additional steps, using the round paint brush mode, the parts of the cerebellum and sagittal sinus that were falsely included in the WM definition were removed and brain stem structures and ventricles were masked.
 
 The thus polished WM definition and ratio image were input to BrainVoyager's advanced segmentation routine to obtain a gray matter (GM) definition. This GM definition tended to be too inclusive, containing dura mater and blood vessels. For this reason, we masked the ratio image with the WM and GM definitions and input the resulting image to Segmentator. This allowed us to further exclude non-brain voxels from the GM definition based on their 2D histogram profile along the dimensions of image intensity and gradient magnitude. The thus improved GM definition was inspected and further polished manually in ITK-SNAP using the round paint brush mode. For later mesh visualization, the WM-GM segmentation images were separated in two hemispheres using ITK-SNAP's scalpel tool. Remaining topological errors were corrected using the bridge removal option in BrainVoyager \parencite{Kriegeskorte2001} and manual correction. Note that all segmentation steps were performed at the original resolution of the anatomical images (0.6~mm isotropic).
 
 \subsection{Functional data - preparation}
-Functional data were processed using BrainVoyager 20.0, SPM 12 \parencite{Friston2006}, FSL 5.0 \parencite{Jenkinson2012} as well as custom code in Python 2.7 \parencite{numpy2011, scipy2001, matplotlib2007} and in Matlab R2014a (The Mathworks Inc.; Natick, MA, USA). Where not specified otherwise, default settings were used. All functional pre-processing steps were scripted and scripts are available as a \href{https://github.com/MSchnei/motion_quartet_scripts}{GitHub} and \href{https://zenodo.org/record/1489246}{Zenodo repository}. Figure~\ref{fig:figAB_proc}B provides an overview of all functional pre-processing steps. 
+Functional data were processed using BrainVoyager 20.0, SPM 12 \parencite{Friston2006}, FSL 5.0 \parencite{Jenkinson2012} as well as custom code in Python 2.7 \parencite{numpy2011, scipy2001, matplotlib2007} and in Matlab R2014a (The Mathworks Inc.; Natick, MA, USA). Where not specified otherwise, default settings were used. All functional pre-processing steps were scripted and scripts are available as a \href{https://github.com/MSchnei/motion_quartet_scripts}{GitHub} and \href{https://zenodo.org/record/1489246}{Zenodo repository}. Figure~\ref{fig:figB_proc} provides an overview of all functional pre-processing steps. 
 
 \subsubsection{Pre-processing steps}
 Pre-processing for all sub-millimeter images was performed in the following order: slice scan time correction (BrainVoyager), motion-correction (SPM 12), linear trend removal and high-pass filtering (5 cycles) using a general linear model (GLM) Fourier basis set (BrainVoyager) and distortion correction (FSL topup). For motion and distortion correction, we deviated from default settings. Functional images from the first session were motion-corrected using SPM 12 in three steps. First, the first image of each run was realigned to the first image of the first run. Second, the images within each run were aligned to the first image of the run. Third, to avoid local minima, after these first two steps, a mean of all images was calculated and images were realigned to this mean. Motion correction was limited to voxels inside the brain based on an intensity-thresholded and manually corrected brain mask of the functional images. Note that the results of the three steps were combined into a single transformation that was applied to functional images to minimize interpolation artefacts. Functional images from the second scanning session were motion-corrected in a similar vein, with the difference that the first functional image of the second session served as reference image in the first correction step. Steps 2 and 3 were identical. For details on the alignment across scanning sessions, please see below. EPI distortions of the functional images were corrected using FSL topup \parencite{Andersson2003, Smith2004}. The pairs of opposite phase encoding images acquired at the beginning of the first session were input to topup to estimate the susceptibility-induced off-resonance field. The estimated field was then used to correct the distortions for all functional images of the first and second scanning session. For the MT+ localizer images, pre-processing steps included slice scan time correction, motion-correction, linear trend removal combined with high-pass filtering (all performed in BrainVoyager) and distortion correction (FSL topup). In addition to the pre-processing steps described above, we applied Gaussian spatial smoothing (smoothing kernel = 0.8~mm) to the pRF mapping data, reflecting the prior assumption that pRF parameters vary smoothly over space.
@@ -217,17 +217,17 @@ All participants reported regular perceptual switches between horizontal and ver
 \subsection{Results control experiments}
 \label{sec:rescontrol}
 \subsubsection{Control experiment i}
-Figure~\ref{fig:figI_motionTng}A shows the axis-of-motion tuning curves derived from control experiment I in clusters used in the main experiment for two control participants. We observed that clusters showed expected axis-of-motion tuning. Horizontal clusters showed the largest average t-value for the horizontal motion condition, lower t-values for the diagonal motion conditions and the lowest t-value for the vertical motion condition. For vertical clusters we observed a reversed pattern. The permutation testing showed significant correlation for ranks in the horizontal cluster and an idealized horizontally tuned cluster (S1: $\tau$=0.91, p\textless.001; S3: $\tau$=0.91, p\textless.001). Ranks of the vertical cluster correlated significantly with ranks of an idealized vertically tuned cluster (S1: $\tau$=0.91, p\textless.001; S3: $\tau$=0.91, p\textless.001).
+Figure~\ref{fig:figI_motionTng}A shows the axis-of-motion tuning curves derived from control experiment I in clusters used in the main experiment for two control participants. Clusters showed expected axis-of-motion tuning. Horizontal clusters showed the largest average t-value for the horizontal motion condition, lower t-values for the diagonal motion conditions and the lowest t-value for the vertical motion condition. For vertical clusters we observed a reversed pattern. The permutation testing showed significant correlation for ranks in the horizontal cluster and an idealized horizontally tuned cluster (S1: $\tau$=0.91, p\textless.001; S3: $\tau$=0.91, p\textless.001). Ranks of the vertical cluster correlated significantly with ranks of an idealized vertically tuned cluster (S1: $\tau$=0.91, p\textless.001; S3: $\tau$=0.91, p\textless.001).
 
 \subsubsection{Control experiment ii}
-Figure~\ref{fig:figI_motionTng}B shows motion tuning derived from control experiment II for three control participants. All clusters showed tuning in the expected direction such that horizontal clusters show larger average t-values for the horizontal than for the vertical condition and vertical clusters show a reversed pattern. The permutation testing showed significant differences between average t-values for the horizontal and vertical motion condition in both the horizontal (S1: $\bigtriangleup$t=0.43, p\textless.001; S3: $\bigtriangleup$t=0.25, p\textless.001; S9: $\bigtriangleup$t=0.27, p\textless.001) and vertical cluster (S1: $\bigtriangleup$t=-0.65, p\textless.001; S3: $\bigtriangleup$t =-1.21, p\textless.001; S9: $\bigtriangleup$t =-0.68, p\textless.001).
+Figure~\ref{fig:figI_motionTng}B shows motion tuning derived from control experiment II for three control participants. All clusters showed tuning in the expected direction, i.e., horizontal clusters show larger average t-values for the horizontal than for the vertical condition and vertical clusters show a reversed pattern. The permutation testing showed significant differences between average t-values for the horizontal and vertical motion condition in both the horizontal (S1: $\bigtriangleup$t=0.43, p\textless.001; S3: $\bigtriangleup$t=0.25, p\textless.001; S9: $\bigtriangleup$t=0.27, p\textless.001) and vertical cluster (S1: $\bigtriangleup$t=-0.65, p\textless.001; S3: $\bigtriangleup$t =-1.21, p\textless.001; S9: $\bigtriangleup$t =-0.68, p\textless.001).
 
 \subsubsection{Control experiment iii}
-Upon visual inspection, we did not find a difference in visual field coverage between horizontal and vertical clusters (Figure~\ref{fig:figH_retinotopy}A). All clusters showed coverage of the area between and foveal to the inducer squares. We found that clusters had more coverage of the vertical than the horizontal trajectory (Figure~\ref{fig:figH_retinotopy}B), which was significant in all clusters (S3 horizontal cluster: t(165)=-4.21, p\textless.001; S3 vertical cluster: t(40)=-6.35, p\textless.001; S7 horizontal cluster: t(522)=-22.15, p\textless.001; S7 vertical cluster: t(207)=-9.40, p\textless.001). This is partially to be expected since the retinotopic trajectory is larger for the vertical than for the horizontal condition (by a factor of 1.26 for both control participants). We did not find a difference between horizontal and vertical clusters in the amount they overlapped with either the horizontal or vertical motion trajectory (S3: t(205)=0.066, p=.948; S7: t(729)=1.26, p=.209). We obtained similar findings when no R2 thresholding was performed and all voxels were included in the analysis (S3: t(549)=-1.56, p=.119; S7: t(1213)=1.40, p=.163).
+Upon visual inspection, we did not find a difference in visual field coverage between horizontal and vertical clusters (Figure~\ref{fig:figH_retinotopy}A). All clusters showed coverage of the area foveal to the inducer squares. We found that clusters had more coverage of the vertical than the horizontal trajectory (Figure~\ref{fig:figH_retinotopy}B), which was significant in all clusters (S3 horizontal cluster: t(165)=-4.21, p\textless.001; S3 vertical cluster: t(40)=-6.35, p\textless.001; S7 horizontal cluster: t(522)=-22.15, p\textless.001; S7 vertical cluster: t(207)=-9.40, p\textless.001). This is partially to be expected since the retinotopic trajectory is larger for the vertical than for the horizontal condition (by a factor of 1.26 for both control participants). We did not find a difference between horizontal and vertical clusters in the amount they overlapped with either the horizontal or vertical motion trajectory (S3: t(205)=0.066, p=.948; S7: t(729)=1.26, p=.209). We obtained similar findings when no R2 thresholding was performed and all voxels were included in the analysis (S3: t(549)=-1.56, p=.119; S7: t(1213)=1.40, p=.163).
 
 \subsection{Directional spatial autocorrelation}
 \label{sec:auto}
-Figure~\ref{fig:figJ_autoCorr} shows how spatial autocorrelation of preferences for physical motion changes with distance both in the cortical depth and the cortical plane direction. Spatial autocorrelation is consistently higher in the cortical depth than in the cortical plane direction, across participants and across a wide range of cortical distances (with the exception of small distances for participant S9). At low cortical distances, the autocorrelation is high both in the cortical depth and plane direction. Autocorrelation decreases with cortical distance for both directions; however, in several participants (S1, S3, S9) remains high in the cortical depth direction even at large cortical distances. Taken together, these observations indicate that motion preferences were more similar in the cortical depth than the cortical plane direction and often remained similar over large cortical distances in the cortical depth direction.
+Figure~\ref{fig:figJ_autoCorr} plots spatial autocorrelation of preferences for physical motion both in the cortical depth and the cortical plane direction over geometric distance. Spatial autocorrelation is consistently higher in the cortical depth than in the cortical plane direction, across participants and across a wide range of cortical distances (with the exception of small distances in S9). At low cortical distances, the autocorrelation is high both in the cortical depth and plane direction. Autocorrelation decreases with cortical distance for both directions; however, in several participants (S1, S3, S9) remains high in the cortical depth direction even at large cortical distances. Taken together, these observations indicate that motion preferences were more similar in the cortical depth than the cortical plane direction and often remained similar over large cortical distances in the cortical depth direction.
 
 \beginsupplement
 
@@ -236,9 +236,16 @@ Figure~\ref{fig:figJ_autoCorr} shows how spatial autocorrelation of preferences 
 
 \begin{figure}[htbp!]
 \centering
-\includegraphics[width=\textwidth]{figures/chapter_03_SI/figS11.eps}
-\caption{Overview of pre-processing pipeline. \textbf{(A)} Pre-processing pipeline for structural images. \textbf{(B)} Pre-processing pipeline for functional images. Rectangular shapes represent processing steps, rhombic shapes represent input or outputs and cylindrical shapes represent input or output locations.}
-\label{fig:figAB_proc}
+\includegraphics[width=\textwidth]{figures/chapter_03_SI/figS11a.eps}
+\caption{Overview of pre-processing pipeline for structural images. Rectangular shapes represent processing steps, rhombic shapes represent input or outputs and cylindrical shapes represent input or output locations.}
+\label{fig:figA_proc}
+\end{figure}
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=\textwidth]{figures/chapter_03_SI/figS11b.eps}
+\caption{Overview of pre-processing pipeline for functional images. Rectangular shapes represent processing steps, rhombic shapes represent input or outputs and cylindrical shapes represent input or output locations.}
+\label{fig:figB_proc}
 \end{figure}
 
 \begin{figure}[htbp!]
@@ -248,10 +255,10 @@ Figure~\ref{fig:figJ_autoCorr} shows how spatial autocorrelation of preferences 
 \label{fig:figC_segmQual}
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[htbp!]
 \captionsetup{labelformat=empty}
 \centering
-\includegraphics[width=\textwidth]{figures/chapter_03_SI/figS1.eps}
+\includegraphics[width=0.85\textwidth]{figures/chapter_03_SI/figS1.eps}
 \caption{}
 \end{figure}
 
@@ -263,10 +270,10 @@ Figure~\ref{fig:figJ_autoCorr} shows how spatial autocorrelation of preferences 
 \noindent\hrulefill
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[htbp!]
 \captionsetup{labelformat=empty}
 \centering
-\includegraphics[width=0.95\textwidth]{figures/chapter_03_SI/figS2.eps}
+\includegraphics[width=0.85\textwidth]{figures/chapter_03_SI/figS2.eps}
 \caption{}
 \end{figure}
 
@@ -278,10 +285,10 @@ Figure~\ref{fig:figJ_autoCorr} shows how spatial autocorrelation of preferences 
 \noindent\hrulefill
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[htbp!]
 \captionsetup{labelformat=empty}
 \centering
-\includegraphics[width=\textwidth]{figures/chapter_03_SI/figS3.eps}
+\includegraphics[width=0.85\textwidth]{figures/chapter_03_SI/figS3.eps}
 \caption{}
 \end{figure}
 
@@ -296,7 +303,7 @@ Figure~\ref{fig:figJ_autoCorr} shows how spatial autocorrelation of preferences 
 \begin{figure}[htbp!]
 \centering
 \includegraphics[width=\textwidth]{figures/chapter_03_SI/figS4.eps}
-\caption{Results for statistical significance testing of the amplitude modulations during ambiguous motion. The histograms represent a null distribution of t-values obtained by randomly permuting condition labels (1000-fold permutation testing) for either the horizontal (left side, red) or vertical (right side, green) cluster. Blue lines indicate the empirical t-value. Red shading indicates areas above the 97.5th percentile of the null population obtained with 1000-fold permutation testing (rejection area). "H" stands for horizontal, "V" for vertical. Each row represents the results from a different subject.}
+\caption{Results for statistical significance testing of the amplitude modulations during ambiguous motion. The histograms represent a null distribution of t-values obtained by randomly permuting condition labels (1000-fold permutation testing) for either the horizontal (left side, red) or vertical (right side, green) clusters. Blue lines indicate the empirical t-value. Red shading indicates areas above the 97.5th percentile of the null population obtained with permutation testing (rejection area). "H" stands for horizontal, "V" for vertical. Each row represents the results from a different subject.}
 \label{fig:fig2C_supp}
 \end{figure}
 
@@ -314,10 +321,10 @@ Figure~\ref{fig:figJ_autoCorr} shows how spatial autocorrelation of preferences 
 \label{fig:fig3C_supp}
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[htbp!]
 \captionsetup{labelformat=empty}
 \centering
-\includegraphics[width=\textwidth]{figures/chapter_03_SI/figS7.eps}
+\includegraphics[width=0.85\textwidth]{figures/chapter_03_SI/figS7.eps}
 \caption{}
 \end{figure}
 
@@ -329,7 +336,7 @@ Figure~\ref{fig:figJ_autoCorr} shows how spatial autocorrelation of preferences 
 \noindent\hrulefill
 \end{figure}
 
-\begin{figure}[htb!]
+\begin{figure}[htbp!]
 \captionsetup{labelformat=empty}
 \centering
 \includegraphics[width=\textwidth]{figures/chapter_03_SI/figS8.eps}

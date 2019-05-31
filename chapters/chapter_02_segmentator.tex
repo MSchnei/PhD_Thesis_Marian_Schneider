@@ -48,7 +48,7 @@ Since different tissue types occupy different regions in the 2D histogram, each 
 \subsection{Creating transfer functions}
 The simplest way to create a transfer function is to explore the data by moving widgets with a specified shape over the 2D histogram representation \parencite{Kniss2005}. For example, Figure~\ref{fig:Fig2} shows how a circular sector could be moved on top of the 2D histogram to highlight particular regions. In this case, only MRI voxels whose intensity-gradient magnitude combination falls within the highlighted region of the 2D histogram would be selected. Position and size of the circular sector can then be refined until the desired data have been isolated.
 
-\begin{figure}[htb!]
+\begin{figure}[htbp!]
 \centering
 \includegraphics[width=\textwidth]{figures/chapter_02/figure_2.png}
 \caption{Creation of 2D transfer functions with pre-defined shapes. \textbf{(A)} Intensity and \textbf{(B)} gradient magnitude values of a brain extracted T1w-divided-by-PDw MRI image are represented in a 2D histogram. By moving widgets of pre-defined shape, e.g. a circle, over the \textbf{(C)} 2D histogram and \textbf{(D)} concurrent visualization of selected voxels on a 2D slice of brain, positions of different tissue types in the 2D histogram can be probed and transfer functions can be created. In this example, the different probe positions (yellow, orange and red circles) appear to contain different aspects of GM.}
@@ -57,7 +57,7 @@ The simplest way to create a transfer function is to explore the data by moving 
 
 Using such a straightforward process of exploration and refinement \parencite{Kniss2002}, however, might yield slightly sub-optimal results. The shape of the widget might not capture the ideal shape given the data or the user might lack the prior knowledge that is required for this task. Alternatively, hierarchical exploration of normalized graph cut decision trees can be used \parencite{Ip2012}. This graph cut method results in a set of components (i.e. clusters) of the histogram that are mutually exclusive and collectively exhaustive. This allows the user to split and merge clusters in a data-driven and intuitive way that can be aided by the immediate visualization of the resulting segmentation (Figure~\ref{fig:Fig3}). The method allows for semi-automatic tissue selection, i.e. the shape of the clusters is data-driven but the decision which clusters to join and which to divide is made by the user.
 
-\begin{figure}[htb!]
+\begin{figure}[htbp!]
 \centering
 \includegraphics[width=\textwidth]{figures/chapter_02/figure_3.png}
 \caption{Creation of 2D transfer functions with data-driven shapes. \textbf{(A)} The user starts with the 2D histogram representation of image intensity and gradient magnitude (left side) and concurrent visualization of the original brain data (right side). The user can then interact with and select data in the 2D histogram to specify transfer functions. In this example, this was done with the help of a normalized graph cut decision tree. \textbf{(B)} The interaction with the 2D histogram results in data-driven shapes of selected areas, here shaded in pink, green and blue (left side). Voxels selected by those areas are highlighted in corresponding colors against the backdrop of the original brain data (right side). The visualization reveals that the area of the 2D histogram shaded in blue selects brain voxels, while the areas shaded in green and pink select CSF* and blood vessel voxels**/dura mater***, respectively.}
@@ -119,7 +119,7 @@ Given that the AVHD quantifies the similarity of two boundaries, we first extrac
 \label{sec:ValidationResults}
 Visual inspection revealed that applying the GraMag method excluded most of the vessels and dura mater voxels and resulted in a more plausible GM matter definition for both MPRAGE and MP2RAGE data sets (see Figure~\ref{fig:Fig4}).
 
-\begin{figure}[htb!]
+\begin{figure}[htbp!]
 \centering
 \includegraphics[width=\textwidth]{figures/chapter_02/figure_4.png}
 \caption{Comparison of GM segmentation results. GM segmentation results are shown on the transverse slices of two representative subjects for the MPRAGE (upper row) and the MP2RAGE (lower row) data set before and after applying the GraMag method. The original image that is input to the segmentation is shown on the left. The initial GM segmentation obtained with SPM 12 or CBS tools is shown in red. GM segmentations after additional polishing with brain mask obtained with the GraMag method are overlaid in blue. Additional masking removes CSF*, blood vessels**, and most of dura mater*** voxels from the initial GM definitions.}
@@ -128,7 +128,7 @@ Visual inspection revealed that applying the GraMag method excluded most of the 
 
 Table~\ref{tab:table1} compares segmentation performance before and after applying the GraMag method to the initial GM segmentations for the MPRAGE data set. The GraMag method led to an improvement of GM segmentations in all subjects for segmentations from SPM 12 and all but one subject for segmentations from FSL FAST. On average, the AVHD decreased from 0.735 $\pm$ 0.100 (mean $\pm$ standard deviation across subjects) to 0.580 $\pm$ 0.022 for SPM 12 and from 0.601 $\pm$ 0.083 to 0.572 $\pm$ 0.073 for FSL FAST. The GraMag method did not affect the DICE coefficient. On average, it changed very little from 0.866 $\pm$ 0.014 to 0.860 $\pm$ 0.021 for SPM 12 and from 0.870 $\pm$ 0.015 to 0.873 $\pm$ 0.019 for FSL FAST.
 
-\begin{table}[!ht]
+\begin{table}[htb!]
 \centering
 \caption{
 Segmentation performance scores MPRAGE data set. The table shows the DICE (larger is better) and AVHD (less is better) for the initial SPM 12 and FSL FAST GM segmentations before and after applying the gradient magnitude method. DICE, DICE Coefficient; AVHD, Average Hausdorff Distance; Init, initial segmentation; GraMag, gradient magnitude method.}
@@ -160,7 +160,7 @@ Segmentation performance scores MPRAGE data set. The table shows the DICE (large
 
 Table~\ref{tab:table2} compares segmentation performances before and after applying the GraMag method to the segmentations for the MP2RAGE data set. The GraMag method decreased AVHD for all but one subject and, on average, from 0.544 $\pm$ 0.121 to 0.477 $\pm$ 0.087 for CBS tools and from 1.012 $\pm$ 0.043 to 0.830 $\pm$ 0.082 for FSL FAST. On average, it slightly increased the DICE coefficient for initial CBS tools segmentations from 0.861 $\pm$ 0.024 to 0.868 $\pm$ 0.028 and decreased the DICE coefficient for FSL FAST segmentations from 0.804 $\pm$ 0.035 to 0.785 $\pm$ 0.034.
 
-\begin{table}[!ht]
+\begin{table}[htb!]
 \centering
 \caption{
 Segmentation performance scores MP2RAGE data set. The table shows the DICE (larger is better) and AVHD (less is better) for the initial CBS tools and FSL FAST GM segmentations before and after additional masking using the gradient magnitude method. DICE, DICE Coefficient; AVHD, Average Hausdorff Distance; Init, initial segmentation; GraMag, gradient magnitude method.}
@@ -263,7 +263,7 @@ To estimate the time saved by substituting manual correction with Segmentator, w
 
 \begin{figure}[htbp!]
 \centering
-\includegraphics[width=\textwidth]{figures/chapter_02_SI/figure_S6.eps}
+\includegraphics[width=0.85\textwidth]{figures/chapter_02_SI/figure_S6.eps}
 \caption{Flowchart diagram MP2RAGE pipeline. This diagram provides a detailed overview of all the inputs, processing steps and outputs for MP2RAGE pipeline. Rectangular shapes represent processing steps, rhombic shapes represent input or outputs and cylindrical shapes represent input or output locations.}
 \label{fig:S06_Fig}
 \end{figure}

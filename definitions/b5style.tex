@@ -1,7 +1,7 @@
 \documentclass
 [
 	paper=b5,            % B5 = 176 * 250mm
-	fontsize=11pt,
+	fontsize=11pt,       % value of \normalsize font
 	headings=big,
 	numbers=noendperiod, % 2.3.1 vs 2.3.1. (no dot after the last chapter number)
 	twoside=true,        % true for print version
@@ -9,7 +9,7 @@
 	BCOR=2.1cm,          % Binding correction, 2.1cm for print version. Otherwise 0.
 	cleardoublepage=empty,
 	headinclude=true,
-    footinclude=false,
+    footinclude=true, % false
 	headsepline=true,
 	version=last % Use latest version of the KOMA-Script
 ]
