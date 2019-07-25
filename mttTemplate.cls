@@ -145,7 +145,7 @@
 	\end{flushleft}
 
 	\vfill
-
+    \noindent
 	The research presented in this thesis was supported by the Netherlands Organisation for Scientific Research (NWO) Research Talent grant
 	    406-14-108 awarded to Marian Schneider and Rainer Goebel.
 
@@ -186,7 +186,7 @@
 % For citing publications in the beginning of the chapter
 \newcommand{\paperciteone}{
 	\begin{bottomparagraph}
-		\rule{0.5\textwidth}{0.1pt}\\
+		\noindent\rule{0.5\textwidth}{0.1pt}\\
 		 Based on\\
 		 Gulban, O. F.*, Schneider, M.*, Marquardt, I., Haast, R. A., {\&} {De Martino}, F. (2018). A scalable method to improve outer gray matter boundary segmentation at ultra high field MRI. \textit{Plos One}, 13, 1-33.\\
 		 \\
@@ -195,16 +195,18 @@
 }
 \newcommand{\papercitetwo}{
 	\begin{bottomparagraph}
-		\rule{0.5\textwidth}{0.1pt}\\
+		\noindent\rule{0.5\textwidth}{0.1pt}\\
 		 Based on\\
 		 Schneider, M., Kemper, V. G., Emmerling, T. C., {De Martino}, F., {\&} Goebel, R. (2019). Columnar clusters in the human motion complex reflect consciously perceived motion axis. \textit{Proceedings of the National Academy of Sciences}, 116, 5096-5101.
 	\end{bottomparagraph}
 }
 \newcommand{\papercitethree}{
 	\begin{bottomparagraph}
-		\rule{0.5\textwidth}{0.1pt}\\
+		\noindent\rule{0.5\textwidth}{0.1pt}\\
 		 Based on\\
-		 Schneider, M., Marquardt, I., Sengupta, S., {De Martino}, F., {\&} Goebel, R. (submitted). Motion displaces population receptive fields in the direction opposite to motion.
+		 Schneider, M., Marquardt, I., Sengupta, S., {De Martino}, F., {\&} Goebel, R. (submitted). Linking apparent position to population receptive field estimates using a visual field projection model.\\
+		 \\
+		 Schneider, M., Marquardt, I., Sengupta, S., {De Martino}, F., {\&} Goebel, R. (in preparation). Motion displaces population receptive fields in the direction opposite to motion.
 	\end{bottomparagraph}
 }
 
@@ -235,6 +237,13 @@
         \setcounter{figure}{0}
         \renewcommand{\thefigure}{\thechapter.\arabic{figure}}%
      }
+
+% For changing the numbering of figures in the valorization section
+\newcommand{\beginvalorization}{%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{V\arabic{figure}}%
+     }
+
 
 % Set the title style
 \KOMAoption{chapterprefix}{true}
