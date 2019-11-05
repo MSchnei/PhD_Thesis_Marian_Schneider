@@ -51,7 +51,7 @@
 		{\large\bfseries {Doctoral thesis}}
 		\\~\\
 		\begin{spacing}{1.5}
-		{\Large\bfseries {\thesistitle}}
+		{\large\bfseries\MakeUppercase {\thesistitle}}
 		\end{spacing}
 
 		\vspace{\stretch{0.5}}
@@ -71,7 +71,7 @@
 	\begin{bottomparagraph}
 
 	\textcopyright \space \thesisauthor, Maastricht \thesisyear. \\
-	All rights reserved. No part of this publication may be reproduced, stored in a retrieval system or transmitted in any form or by any means, electronic, mechanical, photocopying, recording or otherwise, without prior written permission of the author.
+	This work is licensed under a Creative Commons Attribution 4.0 International License (CC BY 4.0). You are free to share and adapt the material for any purpose, even commercially, under the following terms: Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits. This is a human-readable summary of (and not a substitute for) the license.  For the full license text, see: \href{https://creativecommons.org/licenses/by/4.0/legalcode}{https://creativecommons.org/licenses/by/4.0/legalcode}
 	\\~\\
 	\begin{tabular}{@{}ll@{}}
 		Cover & \coverdetails \\
@@ -97,7 +97,7 @@
 
 		Dissertation\\~\\
 		To obtain the degree of Doctor at Maastricht University,\\
-		on the authority of the Rector Magnificus, Prof. Dr. R.M. Letschert,\\
+		on the authority of the Rector Magnificus, Prof. Dr. Rianne M. Letschert,\\
 		in accordance with the decision of the Board of Deans,\\
 		to be defended in public on \\
 		\thesisdefendingdate, at \thesisdefendingtime
@@ -119,11 +119,11 @@
 }
 
 % The info page with the promotor information and the legal stuff
-\newcommand{\infopage}[1][false]{
+\newcommand{\infopage}{
 	\thispagestyle{empty}
 
 	\begin{flushleft}
-		\textbf{Promotor}
+		\textbf{Promotors}
 		\begin{addmarginnobigskip}[1em]{1em}
 			\thesispromotors
 		\end{addmarginnobigskip}
@@ -204,7 +204,7 @@
 	\begin{bottomparagraph}
 		\noindent\rule{0.5\textwidth}{0.1pt}\\
 		 Based on\\
-		 Schneider, M., Marquardt, I., Sengupta, S., {De Martino}, F., {\&} Goebel, R. (submitted). Linking apparent position to population receptive field estimates using a visual field projection model.\\
+		 Schneider, M., Marquardt, I., Sengupta, S., {De Martino}, F., {\&} Goebel, R. (2019). Linking apparent position to population receptive field estimates using a visual field projection model. \textit{Proceedings of the Cognitive Computational Neuroscience Conference}, 3, 1006-1009. \\
 		 \\
 		 Schneider, M., Marquardt, I., Sengupta, S., {De Martino}, F., {\&} Goebel, R. (in preparation). Motion displaces population receptive fields in the direction opposite to motion.
 	\end{bottomparagraph}
